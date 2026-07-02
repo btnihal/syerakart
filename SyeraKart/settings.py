@@ -28,11 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['syerakart-production.up.railway.app', 'localhost', '127.0.0.1']
-
-
+DEBUG = config('DEBUG', default=True, cast=bool)
+ALLOWED_HOSTS = ['syerakart-production.up.railway.app/','localhost','127.0.0.1',]
 # Application definition
 
 INSTALLED_APPS = [
@@ -156,9 +153,9 @@ MESSAGE_TAGS = {
 }
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
-    'API_KEY': os.getenv('API_KEY'),
-    'API_SECRET': os.getenv('API_SECRET')
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
